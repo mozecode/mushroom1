@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Mushroom Mania</title>
+    </head>
+    <body ng-app = 'app'>
+        <div>
+            Poisonous Mushrooms: <input type="radio" name="mushroom" ng-model ="canIeatit" value="false" >
+            Non-Poisonous Mushrooms:<input type="radio" name="mushroom" ng-model="canIeatit" value = "true">
+        </div>
+        <div ng-controller ="MushroomController">
+        <!--loop through mushroom objects in array created in filterMushrooms, filter by edible property- model canIeatit returns value of true or false-->
+            <div class="card" ng-repeat ="item in mushroomArray | filter:{edible:canIeatit}">
+                <h2>{{item.name}}</h2>
+                <!-- <h3 ng-if = 'item.edible'>Edible</h3>
+                <h3 ng-if = '!item.edible' >Inedible</h3> -->
+                <p>{{item.description}}</p>
+            </div>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+        <script type="text/javascript" src="./javascripts/app.js"></script>
+    </body>
+</html>
