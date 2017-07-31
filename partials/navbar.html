@@ -1,0 +1,35 @@
+<nav class="navbar navbar-default" ng-controller="NavController"><!--ng controller because this is outside of our app.js routing-->
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#/">Mushroom App</a>
+    </div>
+
+
+
+    <!-- search -->
+    <div class="col-xs-6 searchBox" >
+      <div class="input-group">
+        <span class="input-group-btn">
+          <button class="btn btn-default"></button>
+        </span>
+        <input type="text" class="form-control" placeholder="Search for..." ng-model="searchText.searchTerm">
+        <!--empty string intially bc of filter factory and nav controller-->
+      </div>
+    </div>
+<!--search- ng model is searchText.searchTerm - look at nav controller-->
+
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>

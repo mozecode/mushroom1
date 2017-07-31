@@ -19,13 +19,27 @@ mushroomApp.factory('MushroomFactory', function($q, $http){
 	return {getMush};
 });
 
+//filterfactory to filter by searchbox
+mushroomApp.factory('FilterFactory', function() {
+  return {
+    searchTerm: ""
+  };
+});
 
-mushroomApp.controller('MushroomController', function($scope, MushroomFactory) {
+mushroomApp.controller('NavController', function($scope, FilterFactory){
+	$scope.searchText = FilterFactory;
+	//FilterFactory makes searchText take on value of object with property of searchTerm- its value is empty string-- go to navbar.html
+});
+
+
+mushroomApp.controller('MushroomController', function($scope, MushroomFactory, FilterFactory) {
 	MushroomFactory.getMush()
 	.then((mushroomData) =>{
 		console.log ("mshData", mushroomData.data);
 		filterMushrooms(mushroomData.data);//comes back as object of objects, and you can't use filter on an object
 	})
+
+	$scope.searchText = FilterFactory;  //don't know what to do with this.
 
 	let filterMushrooms=(data)=>{
 		console.log ("filterclicked");

@@ -2,22 +2,39 @@
 <html>
     <head>
         <title>Mushroom Mania</title>
+         <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"><!--allows you to put in bootstrap <i> icons in todo list partial -->
+        <link rel="stylesheet" type="text/css" href="lib/node_modules/bootstrap/dist/css/bootstrap.min.css">
     </head>
     <body ng-app = 'app'>
+
+        <div ng-include ="'partials/navbar.html'">
+        </div>
+        <!--add in partials folder and navbar partial to be included perpetually-->
         <div>
             Poisonous Mushrooms: <input type="radio" name="mushroom" ng-model ="canIeatit" value="false" >
             Non-Poisonous Mushrooms:<input type="radio" name="mushroom" ng-model="canIeatit" value = "true">
         </div>
+
+<!--how to use searchText.searchTerm here in a filter with ng-repeat??-->
+
+
         <div ng-controller ="MushroomController">
         <!--loop through mushroom objects in array created in filterMushrooms, filter by edible property- model canIeatit returns value of true or false-->
-            <div class="card" ng-repeat ="item in mushroomArray | filter:{edible:canIeatit}">
+            <div class="card" ng-repeat ="item in mushroomArray | filter:{edible:canIeatit} |filter: {description:searchText.searchTerm}">
                 <h2>{{item.name}}</h2>
                 <!-- <h3 ng-if = 'item.edible'>Edible</h3>
-                <h3 ng-if = '!item.edible' >Inedible</h3> -->
+                <h3 ng-if = '!item.edible' >Inedible</h3>  to use boolean value to show something else -->
                 <p>{{item.description}}</p>
             </div>
         </div>
+          <!-- third-party scripts -->
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
         <script type="text/javascript" src="./javascripts/app.js"></script>
+
+        <script type="text/javascript" src="lib/node_modules/jquery/dist/jquery.min.js"></script>
+        <script type="text/javascript" src="lib/node_modules/bootstrap/dist/js/bootstrap.min.js">
+        </script>
+        <script type="text/javascript" src="lib/node_modules/firebase/firebase.js"></script>
+
     </body>
 </html>
